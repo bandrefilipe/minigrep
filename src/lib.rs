@@ -12,6 +12,7 @@ pub fn run(args: &[String]) -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
+#[derive(Debug, PartialEq)]
 struct Config {
     query: String,
     filename: String,
@@ -29,5 +30,25 @@ impl Config {
         };
 
         Ok(config)
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn config_creation_requires_at_least_three_arguments() {
+        let mut args = vec!["one".to_string(), "two".to_string()];
+        assert_eq!(Config::new(&args), Err("Not enough arguments"));
+
+        args.push("three".to_string());
+        assert_eq!(
+            Config::new(&args),
+            Ok(Config {
+                query: "two".to_string(),
+                filename: "three".to_string(),
+            }),
+        );
     }
 }

@@ -51,7 +51,6 @@ mod tests {
     #[test]
     fn search_finds_nothing() {
         let query = "monomorphization";
-        let empty_vec: Vec<&str> = vec![];
-        assert_eq!(search(query, TEST_CONTENTS), empty_vec);
+        assert_eq!(search(query, TEST_CONTENTS).len(), 0);
     }
 }

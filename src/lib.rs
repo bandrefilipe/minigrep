@@ -11,7 +11,7 @@ pub fn run(args: &[String]) -> Result<(), Box<dyn Error>> {
     let contents = fs::read_to_string(config.filename)?;
 
     for line in search(&config.query, &contents) {
-        println!("{}", line);
+        println!("{line}");
     }
 
     Ok(())

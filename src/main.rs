@@ -5,7 +5,7 @@ fn main() {
     process::exit(match minigrep::run(&args) {
         Ok(_) => 0,
         Err(error) => {
-            eprintln!("error: {}", error);
+            eprintln!("error: {error}");
             1
         }
     });
